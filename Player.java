@@ -7,13 +7,20 @@ public class Player {
 	//constructor
 	public Player(String n) {
 		this.name=n;
-		this.score=0;
+		this.score=0;//default value
 	}
-	//method
+	
+	//methods
+	public String getName() {
+		return name;
+	}
+	public int getScore() {
+		return score;
+	}
 	public boolean takeTurn(BSBoard b) {
 		Square[][] sq=b.getBoard();//get the current board
 		Scanner s=new Scanner(System.in);
-		System.out.printf("%s enter x and y\n", name);//take the guess
+		System.out.printf("%s enter x and y\n", getName());//take the guess
 		int x=s.nextInt();//x coordinate
 		int y=s.nextInt();//y coordinate
 		s.nextLine();
@@ -24,16 +31,23 @@ public class Player {
 				System.out.println("Hit!");
 				if(sq[x][y].getBattleship().getStatus()==true) {//check if the ship has sunk or not
 					sq[x][y].getBattleship().setSunk(true);;//update the board with number of ships sunk
+					b.setShipSunk();
 					score++;//increment the points
-					System.out.println("Ship Sunk, Points: "+ score);
+					System.out.println("Ship Sunk, Points: "+ getScore());
 				}
 			}
-			else System.out.println("Missed!");	//if no ship is on the square guessed
+			else {
+				System.out.println("Missed!");	//if no ship is on the square guessed
+				System.out.println("Points of "+ getName()+": "+getScore());
+			}
 		}
-		else System.out.println("Invalid");//if shot already fired at the square
+		else {
+			System.out.println("Invalid");//if shot already fired at the square
+			System.out.println("Points of "+ getName()+": "+getScore());
+		}
 		System.out.println(b);//toString method to display the board
-		if(score==5) {
-			System.out.printf("%s won",name);
+		if(b.getShipSunk()==b.getTotalShips()) {
+			System.out.printf("%s Won!\n", getName());
 			return true;//if all the ships are sunk
 		}
 		else return false;//if ships are still remaining

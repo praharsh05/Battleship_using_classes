@@ -1,9 +1,9 @@
 
 public class Battleship {
 	//attributes
-	private boolean sunk;//sunk or not
-	private int health;//health of the ship
-	private int size;//size of the ship
+	protected boolean sunk;//sunk or not
+	protected int health;//health of the ship
+	protected int size;//size of the ship
 	
 	
 	//constructor
@@ -14,20 +14,20 @@ public class Battleship {
 	}
 	
 	//methods
-	public void setHealth() {
-		this.health=this.size=2;//setting the health and size as 2	
+	public void setHealthSize(int a) {
+		this.health=a;
+		this.size=a;
 	}
-	public void hit() {//when hit
+	public void hit() {//when a ship is hit
 		this.health--;
-//		this.size--;
-		if(this.health==0) {
+		if(this.health==0) {//if health becomes 0 then ship is sunk
 			sunk=true;
 		}
 	}
-	public void setSunk(boolean b) {
+	public void setSunk(boolean b) {//setting the boolean 
 		this.sunk=b;
 	}
-	public boolean getStatus() {
+	public boolean getStatus() {//getting the status of ship if sunk or not
 		return sunk;
 	}
 	
