@@ -1,6 +1,6 @@
 
 public class SmallBattleship extends Battleship{
-	private static int SmallShip=3;
+	private static int SmallShip=3;//static variable of number of ships
 	
 	//constructor
 	public SmallBattleship() {
