@@ -36,7 +36,7 @@ public class Square {
 	public int getRow() {//getting row
 		return this.row;
 	}
-	public int getColoumn() {//getting coloumn
+	public int getColoumn() {//getting column
 		return this.coloumn;
 	}
 	public boolean getOccupancy() {//get occupancy
@@ -47,6 +47,18 @@ public class Square {
 	}
 	public Battleship getBattleship() {//get ship
 		return this.bt;
+	}
+	public String toString() {//display the changes on the board
+		String hit="x";//in case of hit on the ship
+		String miss="o";//in case of a miss
+		String water="-";//in case there's no interaction with the cell
+		if(this.getFire()==true) {//check if fired on the square
+			if(this.getOccupancy()==true) {//check if a ship occupies the square
+				return String.format("%3s", hit);//give 3 spaces in length
+			}
+			else return String.format("%3s",miss);//give 3 spaces in length
+			}
+			else return String.format("%3s",water);//give 3 spaces in length
 	}
 }
 
