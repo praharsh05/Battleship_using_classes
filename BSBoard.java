@@ -5,7 +5,10 @@ public class BSBoard {
 	private int coloumn;//coloumn
 	private Square[][] board;
 	private int shipSunk;//no of ships sunk
-	private int totalShips=6;
+	private LargeBattleship lb=new LargeBattleship();
+	private MediumBattleship mb=new MediumBattleship();
+	private SmallBattleship sb=new SmallBattleship();
+	private int totalShips=lb.getLargeShips()+mb.getMediumShips()+sb.getSmallShips();
 	private Battleship b;
 	//constructor
 	public BSBoard(int a, int b) {
@@ -30,10 +33,10 @@ public class BSBoard {
 		boolean successPlace;//boolean to check if ship placed successfully
 		boolean holdCoin;//boolean to hold the value of coin toss
 		for(int i=0;i<totalShips;) {//counter to place 5 ships on the board
-			if(i==0) {
+			if(i<=lb.getLargeShips()) {
 				b =new LargeBattleship();
 			}
-			else if(i>0 && i<3) {
+			else if(i>lb.getLargeShips() && i<mb.getMediumShips()) {
 				b =new MediumBattleship();
 			}
 			else {
@@ -91,7 +94,7 @@ public class BSBoard {
 					Random r = new Random();
 					int xcord=r.nextInt(row);
 					int ycord=r.nextInt(coloumn);//random generation of x, y coordinates
-					if(i==0) {
+					if(i==0) {//placement of large ship
 						if((xcord>0 && xcord<this.row) && (ycord>0 && ycord<this.coloumn) && (ycord+1>0 && ycord+1<this.row) && (ycord+2>0 && ycord+2<this.row) ) {//check for board constraints
 							if((board[xcord][ycord].getOccupancy()==false) && (board[xcord][ycord+1].getOccupancy()==false) && (board[xcord][ycord+2].getOccupancy()==false)) {//checking for occupancy of squares
 								board[xcord][ycord].setOccupancy(true);//occupy the square
@@ -106,7 +109,7 @@ public class BSBoard {
 							}					
 						}
 					}
-					else if(i>0 && i<3) {
+					else if(i>0 && i<3) {//placement of medium ship
 						if((xcord>0 && xcord<this.row) && (ycord>0 && ycord<this.coloumn) && (ycord+1>0 && ycord+1<this.row)) {//check for board constraints
 							if((board[xcord][ycord].getOccupancy()==false) && (board[xcord][ycord+1].getOccupancy()==false)) {//checking for occupancy of squares
 								board[xcord][ycord].setOccupancy(true);//occupy the square
@@ -119,7 +122,7 @@ public class BSBoard {
 							}
 						}
 					}
-					else {
+					else {//placement of small ship
 						if((xcord>0 && xcord<this.row) && (ycord>0 && ycord<this.coloumn)) {//check for board constraints
 							if(board[xcord][ycord].getOccupancy()==false ) {//checking for occupancy of squares
 								board[xcord][ycord].setOccupancy(true);//occupy the square
@@ -153,19 +156,11 @@ public class BSBoard {
 		return board;
 	}
 	public String toString() {//display the changes on the board
-		String hit="x";//in case of hit on the ship
-		String miss="o";//in case of a miss
-		String water="-";//in case there's no interaction with the cell
+		
 		String s="";//initial string
 		for(int i=0;i<this.row;i++) {
 			for(int j=0;j<this.coloumn;j++) {
-				if(board[i][j].getFire()==true) {
-					if(board[i][j].getOccupancy()==true) {
-						s+=String.format("%3s", hit);//give 3 spaces in length
-					}
-					else s+=String.format("%3s",miss);//give 3 spaces in length
-				}
-				else s+=String.format("%3s",water);//give 3 spaces in length
+				s+=board[i][j];//invoking the toString of the square
 			}
 			s+="\n";//new line after the column loop finishes
 		}
