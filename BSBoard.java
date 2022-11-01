@@ -2,7 +2,7 @@ import java.util.Random;
 public class BSBoard {
 	//attributes
 	private int row;//row
-	private int coloumn;//coloumn
+	private int coloumn;//column
 	private Square[][] board;
 	private int shipSunk;//no of ships sunk
 	private LargeBattleship lb=new LargeBattleship();
@@ -26,17 +26,16 @@ public class BSBoard {
 				board[i][j]=new Square(i,j);//populating board with square objects
 			}
 		}
-		
 	}
 	
 	public void generateShip() {//generating and placing ships
 		boolean successPlace;//boolean to check if ship placed successfully
 		boolean holdCoin;//boolean to hold the value of coin toss
 		for(int i=0;i<totalShips;) {//counter to place 5 ships on the board
-			if(i<=lb.getLargeShips()) {
+			if(i<lb.getLargeShips()) {
 				b =new LargeBattleship();
 			}
-			else if(i>lb.getLargeShips() && i<mb.getMediumShips()) {
+			else if(i>=lb.getLargeShips() && i<=mb.getMediumShips()) {
 				b =new MediumBattleship();
 			}
 			else {
@@ -49,7 +48,7 @@ public class BSBoard {
 					Random r = new Random();
 					int xcord=r.nextInt(row);
 					int ycord=r.nextInt(coloumn);//random generation of x, y coordinates
-					if(i==0) {//placement of Large ship
+					if(i<lb.getLargeShips()) {//placement of Large ship
 						if((xcord>0 && xcord<this.row) && (xcord+1>0 && xcord+1<this.row) && (xcord+2>0 && xcord+2<this.row) && (ycord>0 && ycord<this.coloumn)) {//check for board constraints
 							if((board[xcord][ycord].getOccupancy()==false) && (board[xcord+1][ycord].getOccupancy()==false) && (board[xcord+2][ycord].getOccupancy()==false)) {//checking for occupancy of squares
 								board[xcord][ycord].setOccupancy(true);//occupy the square
@@ -64,7 +63,7 @@ public class BSBoard {
 							}					
 						}
 					}
-					else if(i>0 && i<3) {//placement of medium ship
+					else if(i>=lb.getLargeShips() && i<=mb.getMediumShips()) {//placement of medium ship
 						if((xcord>0 && xcord<this.row) && (xcord+1>0 && xcord+1<this.row) && (ycord>0 && ycord<this.coloumn)) {//check for board constraints
 							if((board[xcord][ycord].getOccupancy()==false) && (board[xcord+1][ycord].getOccupancy()==false)) {//checking for occupancy of squares
 								board[xcord][ycord].setOccupancy(true);//occupy the square
@@ -94,7 +93,7 @@ public class BSBoard {
 					Random r = new Random();
 					int xcord=r.nextInt(row);
 					int ycord=r.nextInt(coloumn);//random generation of x, y coordinates
-					if(i==0) {//placement of large ship
+					if(i<lb.getLargeShips()) {//placement of large ship
 						if((xcord>0 && xcord<this.row) && (ycord>0 && ycord<this.coloumn) && (ycord+1>0 && ycord+1<this.row) && (ycord+2>0 && ycord+2<this.row) ) {//check for board constraints
 							if((board[xcord][ycord].getOccupancy()==false) && (board[xcord][ycord+1].getOccupancy()==false) && (board[xcord][ycord+2].getOccupancy()==false)) {//checking for occupancy of squares
 								board[xcord][ycord].setOccupancy(true);//occupy the square
@@ -109,7 +108,7 @@ public class BSBoard {
 							}					
 						}
 					}
-					else if(i>0 && i<3) {//placement of medium ship
+					else if(i>=lb.getLargeShips() && i<=mb.getMediumShips()) {//placement of medium ship
 						if((xcord>0 && xcord<this.row) && (ycord>0 && ycord<this.coloumn) && (ycord+1>0 && ycord+1<this.row)) {//check for board constraints
 							if((board[xcord][ycord].getOccupancy()==false) && (board[xcord][ycord+1].getOccupancy()==false)) {//checking for occupancy of squares
 								board[xcord][ycord].setOccupancy(true);//occupy the square

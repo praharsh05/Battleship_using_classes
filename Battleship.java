@@ -4,7 +4,6 @@ public class Battleship {
 	protected boolean sunk;//sunk or not
 	protected int health;//health of the ship
 	protected int size;//size of the ship
-	protected int shipNo;
 	
 	//constructor
 	public Battleship() {
@@ -14,7 +13,7 @@ public class Battleship {
 	}
 	
 	//methods
-	public void setHealthSize(int a) {
+	public void setHealthSize(int a) {//set health and size of the battleship
 		this.health=a;
 		this.size=a;
 	}
@@ -29,11 +28,5 @@ public class Battleship {
 	}
 	public boolean getStatus() {//getting the status of ship if sunk or not
 		return sunk;
-	}
-	public int getShipNo() {
-		return shipNo;
-	}
-	public void setShipNo(int a) {
-		this.shipNo=a;
 	}
 }

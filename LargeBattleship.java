@@ -5,7 +5,7 @@ public class LargeBattleship extends Battleship{
 	//constructor
 	public LargeBattleship() {
 		super();
-		this.setHealthSize(3);
+		this.setHealthSize(3);//set health and size to 3
 	}
 	
 	//getter

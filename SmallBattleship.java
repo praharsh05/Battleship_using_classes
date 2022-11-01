@@ -5,7 +5,7 @@ public class SmallBattleship extends Battleship{
 	//constructor
 	public SmallBattleship() {
 		super();
-		this.setHealthSize(1);
+		this.setHealthSize(1);//set health and size to 1
 	}
 	
 	//getter

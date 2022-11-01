@@ -31,10 +31,10 @@ public class Player {
 				System.out.println("Points of "+ getName()+": "+getScore());
 				System.out.println("Hit!");
 				if(sq[x][y].getBattleship().getStatus()==true) {//check if the ship has sunk or not
-					sq[x][y].getBattleship().setSunk(true);;//update the board with number of ships sunk
-					b.setShipSunk();
+					sq[x][y].getBattleship().setSunk(true);//update the board with number of ships sunk
+					b.setShipSunk();//increment the number of ships sunk
 					score++;//increment the points
-					System.out.println("Ship Sunk, Points updated to: "+ getScore());
+					System.out.println("Ship Sunk, Points updated to: "+ getScore());//display on the console
 				}
 			}
 			else {
@@ -49,7 +49,7 @@ public class Player {
 		System.out.println("Current State");
 		System.out.println(b);//toString method to display the board
 		if(b.getShipSunk()==b.getTotalShips()) {
-			System.out.printf("%s Won!\n", getName());
+//			System.out.printf("%s Won!\n", getName());
 			return true;//if all the ships are sunk
 		}
 		else return false;//if ships are still remaining

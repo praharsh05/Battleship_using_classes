@@ -17,7 +17,7 @@ public class BSMain {
 		bar2.newBoard();//create board 2
 		System.out.println("Board 2 created");
 		bar2.generateShip();//generate ships on board 2
-		Player p2 = new Player(nam2);//player 2 is initialzed
+		Player p2 = new Player(nam2);//player 2 is initialized
 		System.out.println("Players initialized");
 		boolean win=false;//flag to check if game over not
 		int turn=0;//player 1=0 code for alternating taken from lab solution of programming
@@ -27,6 +27,9 @@ public class BSMain {
 			turn=1-turn;//alternate between player 1 and 2
 		}
 		System.out.println("Game Over!");
+		if(p1.getScore()>p2.getScore()) System.out.println(p1.getName()+" Won!");//if player 1 wins
+		else if(p1.getScore()<p2.getScore()) System.out.println(p2.getName()+ " Won!");//if player 2 wins
+		else System.out.println("Draw!");//in case of a draw
 		s.close();
 	}
 }

@@ -5,7 +5,7 @@ public class MediumBattleship extends Battleship{
 	//constructor
 	public MediumBattleship() {
 		super();
-		this.setHealthSize(2);
+		this.setHealthSize(2);//set health and size to 2
 	}
 		
 	//getter
