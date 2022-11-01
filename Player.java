@@ -28,12 +28,13 @@ public class Player {
 			sq[x][y].setFired(true);//set the square has been fired at
 			if(sq[x][y].getOccupancy()==true) {//check if a ship is present there
 				sq[x][y].getBattleship().hit();//call the hit function from battleship class which decreases health
+				System.out.println("Points of "+ getName()+": "+getScore());
 				System.out.println("Hit!");
 				if(sq[x][y].getBattleship().getStatus()==true) {//check if the ship has sunk or not
 					sq[x][y].getBattleship().setSunk(true);;//update the board with number of ships sunk
 					b.setShipSunk();
 					score++;//increment the points
-					System.out.println("Ship Sunk, Points: "+ getScore());
+					System.out.println("Ship Sunk, Points updated to: "+ getScore());
 				}
 			}
 			else {
@@ -45,6 +46,7 @@ public class Player {
 			System.out.println("Invalid");//if shot already fired at the square
 			System.out.println("Points of "+ getName()+": "+getScore());
 		}
+		System.out.println("Current State");
 		System.out.println(b);//toString method to display the board
 		if(b.getShipSunk()==b.getTotalShips()) {
 			System.out.printf("%s Won!\n", getName());
