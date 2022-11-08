@@ -1,4 +1,9 @@
 import java.util.Scanner;
+
+/*
+ * Name: Praharsh R Dubey
+ * GUID: 2738037D
+ */
 public class BSMain {
 	public static void main(String[] args) {
 		System.out.println("New Game");
@@ -8,22 +13,44 @@ public class BSMain {
 		System.out.println("Enter name of the player2");
 		String nam2=s.next();//name of player 2
 		s.nextLine();
-		BSBoard bar1=new BSBoard(10,10);//board 1
+		
+		//uncomment for original battleship game
+//		board b1=new board(10,10);//board 1 for original battleship task
+//		b1.newBoard();
+//		System.out.println("Board 1 created");
+//		b1.generateShip();//generate ships on board 1
+//		board b2=new board(10,10);//board 2 for original battleship task
+//		b2.newBoard();
+//		System.out.println("Board 2 created");
+//		b2.generateShip();//generate ships on board 1
+		
+		
+		//comment this block to play for original battleship task
+		BSBoard bar1=new BSBoard(10,10);//board 1 for task 5
 		bar1.newBoard();//create new board
 		System.out.println("Board 1 created");
 		bar1.generateShip();//generate ships on board 1
-		Player p1 = new Player(nam1);//player 1 is initialized
 		BSBoard bar2=new BSBoard(10,10);
-		bar2.newBoard();//create board 2
+		bar2.newBoard();//create board 2 for task 5
 		System.out.println("Board 2 created");
 		bar2.generateShip();//generate ships on board 2
+		
+		
+		
+		Player p1 = new Player(nam1);//player 1 is initialized
 		Player p2 = new Player(nam2);//player 2 is initialized
 		System.out.println("Players initialized");
 		boolean win=false;//flag to check if game over not
 		int turn=0;//player 1=0 code for alternating taken from lab solution of programming
 		while(!win) {
-			if(turn==0) win=p1.takeTurn(bar1);
-			else win=p2.takeTurn(bar2);
+			if(turn==0) {
+				win=p1.takeTurn(bar1);//for task 5 board
+//				win=p1.takeTurn(b1);//for original board
+			}
+			else {
+				win=p2.takeTurn(bar2);//for task 5 board
+//				win=p2.takeTurn(b2);//for original board
+			}
 			turn=1-turn;//alternate between player 1 and 2
 		}
 		System.out.println("Game Over!");

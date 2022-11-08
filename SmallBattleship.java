@@ -1,4 +1,7 @@
-
+/*
+ * Name: Praharsh R Dubey
+ * GUID: 2738037D
+ */
 public class SmallBattleship extends Battleship{
 	private static int SmallShip=3;//static variable of number of ships
 	

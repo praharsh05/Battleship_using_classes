@@ -1,3 +1,7 @@
+/*
+ * Name: Praharsh R Dubey
+ * GUID: 2738037D
+ */
 
 public class Battleship {
 	//attributes

@@ -1,5 +1,11 @@
 import java.util.Random;
-public class BSBoard {
+
+/*
+ * Name: Praharsh R Dubey
+ * GUID: 2738037D
+ */
+
+public class BSBoard {//class for task 5 battleships
 	//attributes
 	private int row;//row
 	private int coloumn;//column
@@ -8,7 +14,7 @@ public class BSBoard {
 	private LargeBattleship lb=new LargeBattleship();
 	private MediumBattleship mb=new MediumBattleship();
 	private SmallBattleship sb=new SmallBattleship();
-	private int totalShips=lb.getLargeShips()+mb.getMediumShips()+sb.getSmallShips();
+	private int totalShips=lb.getLargeShips()+mb.getMediumShips()+sb.getSmallShips();//adding the static number of ships
 	private Battleship b;
 	//constructor
 	public BSBoard(int a, int b) {
@@ -31,15 +37,15 @@ public class BSBoard {
 	public void generateShip() {//generating and placing ships
 		boolean successPlace;//boolean to check if ship placed successfully
 		boolean holdCoin;//boolean to hold the value of coin toss
-		for(int i=0;i<totalShips;) {//counter to place 5 ships on the board
+		for(int i=0;i<totalShips;) {//counter to place 6 ships on the board when 
 			if(i<lb.getLargeShips()) {
-				b =new LargeBattleship();
+				b =new LargeBattleship();//initializing a large battleship
 			}
 			else if(i>=lb.getLargeShips() && i<=mb.getMediumShips()) {
-				b =new MediumBattleship();
+				b =new MediumBattleship();//initializing a medium battleship
 			}
 			else {
-				b= new SmallBattleship();//referencing battleship to to set on random squares
+				b= new SmallBattleship();//referencing small battleship to to set on random squares
 			}
 			successPlace=false;//boolean for successful placement of ship
 			holdCoin=coinFlip();//boolean to hold the value of random coin flip
@@ -58,8 +64,8 @@ public class BSBoard {
 								board[xcord+2][ycord].setOccupancy(true);//occupy the vertically adjacent square
 								board[xcord+2][ycord].setBattleship(b);//set a ship on the square
 								System.out.println("Large ship "+(i+1) +" placed vertically at ("+ xcord + ","+ ycord +") , ("+ (xcord+1) + ","+ ycord +") and ("+ (xcord+2) + ","+ ycord+")");
-								i++;
-								successPlace=true;
+								i++;//increment the counter on success
+								successPlace=true;//change the value of successPlace
 							}					
 						}
 					}
@@ -71,8 +77,8 @@ public class BSBoard {
 								board[xcord+1][ycord].setOccupancy(true);//occupy the vertically adjacent square
 								board[xcord+1][ycord].setBattleship(b);//set a ship on the square
 								System.out.println("Medium ship "+(i+1) +" placed vertically at "+ xcord + ","+ ycord +" and "+ (xcord+1) + ","+ ycord);
-								i++;
-								successPlace=true;
+								i++;//increment the counter on success
+								successPlace=true;//change the value of successPlace
 							}					
 						}
 					}
@@ -82,8 +88,8 @@ public class BSBoard {
 								board[xcord][ycord].setOccupancy(true);//occupy the square
 								board[xcord][ycord].setBattleship(b);//set a ship on the square
 								System.out.println("Small ship "+(i+1) +" placed vertically at "+ xcord + ","+ ycord);
-								i++;
-								successPlace=true;
+								i++;//increment the counter on success
+								successPlace=true;//change the value of successPlace
 							}					
 						}
 					}
@@ -103,8 +109,8 @@ public class BSBoard {
 								board[xcord][ycord+2].setOccupancy(true);//occupy the vertically adjacent square
 								board[xcord][ycord+2].setBattleship(b);//set a ship on the square
 								System.out.println("Large ship "+(i+1) +" placed horizontally at ("+ xcord + ","+ ycord +") , ("+ xcord + ","+ (ycord+1) +") and ("+ xcord + ","+ (ycord+2)+")");
-								i++;
-								successPlace=true;
+								i++;//increment the counter on success
+								successPlace=true;//change the value of successPlace
 							}					
 						}
 					}
@@ -116,8 +122,8 @@ public class BSBoard {
 								board[xcord][ycord+1].setOccupancy(true);//occupy the horizontally adjacent square
 								board[xcord][ycord+1].setBattleship(b);//set a ship on the square
 								System.out.println("Medium ship "+(i+1) +" placed horizontally at "+ xcord + ","+ ycord +" and "+ xcord + ","+ (ycord+1));
-								i++;
-								successPlace=true;
+								i++;//increment the counter on success
+								successPlace=true;//change the value of successPlace
 							}
 						}
 					}
@@ -128,7 +134,7 @@ public class BSBoard {
 								board[xcord][ycord].setBattleship(b);//set a ship on the square
 								System.out.println("Small ship "+(i+1) +" placed horizontally at "+ xcord + ","+ ycord);
 								i++;
-								successPlace=true;
+								successPlace=true;//change the value of successPlace
 							}
 						}
 					}

@@ -1,4 +1,7 @@
-
+/*
+ * Name: Praharsh R Dubey
+ * GUID: 2738037D
+ */
 public class MediumBattleship extends Battleship{
 	private static int MediumShip=2;//static variable of number of ships
 	
