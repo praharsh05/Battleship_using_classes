@@ -55,7 +55,7 @@ public class BSBoard {//class for task 5 battleships
 					int xcord=r.nextInt(row);
 					int ycord=r.nextInt(coloumn);//random generation of x, y coordinates
 					if(i<lb.getLargeShips()) {//placement of Large ship
-						if((xcord>0 && xcord<this.row) && (xcord+1>0 && xcord+1<this.row) && (xcord+2>0 && xcord+2<this.row) && (ycord>0 && ycord<this.coloumn)) {//check for board constraints
+						if((xcord>=0 && xcord<this.row) && (xcord+1>=0 && xcord+1<this.row) && (xcord+2>=0 && xcord+2<this.row) && (ycord>=0 && ycord<this.coloumn)) {//check for board constraints
 							if((board[xcord][ycord].getOccupancy()==false) && (board[xcord+1][ycord].getOccupancy()==false) && (board[xcord+2][ycord].getOccupancy()==false)) {//checking for occupancy of squares
 								board[xcord][ycord].setOccupancy(true);//occupy the square
 								board[xcord][ycord].setBattleship(b);//set a ship on the square
@@ -70,7 +70,7 @@ public class BSBoard {//class for task 5 battleships
 						}
 					}
 					else if(i>=lb.getLargeShips() && i<=mb.getMediumShips()) {//placement of medium ship
-						if((xcord>0 && xcord<this.row) && (xcord+1>0 && xcord+1<this.row) && (ycord>0 && ycord<this.coloumn)) {//check for board constraints
+						if((xcord>=0 && xcord<this.row) && (xcord+1>=0 && xcord+1<this.row) && (ycord>=0 && ycord<this.coloumn)) {//check for board constraints
 							if((board[xcord][ycord].getOccupancy()==false) && (board[xcord+1][ycord].getOccupancy()==false)) {//checking for occupancy of squares
 								board[xcord][ycord].setOccupancy(true);//occupy the square
 								board[xcord][ycord].setBattleship(b);//set a ship on the square
@@ -83,7 +83,7 @@ public class BSBoard {//class for task 5 battleships
 						}
 					}
 					else {//placement of small ship
-						if((xcord>0 && xcord<this.row) && (ycord>0 && ycord<this.coloumn)) {//check for board constraints
+						if((xcord>=0 && xcord<this.row) && (ycord>=0 && ycord<this.coloumn)) {//check for board constraints
 							if(board[xcord][ycord].getOccupancy()==false) {//checking for occupancy of squares
 								board[xcord][ycord].setOccupancy(true);//occupy the square
 								board[xcord][ycord].setBattleship(b);//set a ship on the square
@@ -100,7 +100,7 @@ public class BSBoard {//class for task 5 battleships
 					int xcord=r.nextInt(row);
 					int ycord=r.nextInt(coloumn);//random generation of x, y coordinates
 					if(i<lb.getLargeShips()) {//placement of large ship
-						if((xcord>0 && xcord<this.row) && (ycord>0 && ycord<this.coloumn) && (ycord+1>0 && ycord+1<this.row) && (ycord+2>0 && ycord+2<this.row) ) {//check for board constraints
+						if((xcord>=0 && xcord<this.row) && (ycord>=0 && ycord<this.coloumn) && (ycord+1>=0 && ycord+1<this.row) && (ycord+2>=0 && ycord+2<this.row) ) {//check for board constraints
 							if((board[xcord][ycord].getOccupancy()==false) && (board[xcord][ycord+1].getOccupancy()==false) && (board[xcord][ycord+2].getOccupancy()==false)) {//checking for occupancy of squares
 								board[xcord][ycord].setOccupancy(true);//occupy the square
 								board[xcord][ycord].setBattleship(b);//set a ship on the square
@@ -115,7 +115,7 @@ public class BSBoard {//class for task 5 battleships
 						}
 					}
 					else if(i>=lb.getLargeShips() && i<=mb.getMediumShips()) {//placement of medium ship
-						if((xcord>0 && xcord<this.row) && (ycord>0 && ycord<this.coloumn) && (ycord+1>0 && ycord+1<this.row)) {//check for board constraints
+						if((xcord>=0 && xcord<this.row) && (ycord>=0 && ycord<this.coloumn) && (ycord+1>=0 && ycord+1<this.row)) {//check for board constraints
 							if((board[xcord][ycord].getOccupancy()==false) && (board[xcord][ycord+1].getOccupancy()==false)) {//checking for occupancy of squares
 								board[xcord][ycord].setOccupancy(true);//occupy the square
 								board[xcord][ycord].setBattleship(b);//set a ship on the square
@@ -128,7 +128,7 @@ public class BSBoard {//class for task 5 battleships
 						}
 					}
 					else {//placement of small ship
-						if((xcord>0 && xcord<this.row) && (ycord>0 && ycord<this.coloumn)) {//check for board constraints
+						if((xcord>=0 && xcord<this.row) && (ycord>=0 && ycord<this.coloumn)) {//check for board constraints
 							if(board[xcord][ycord].getOccupancy()==false ) {//checking for occupancy of squares
 								board[xcord][ycord].setOccupancy(true);//occupy the square
 								board[xcord][ycord].setBattleship(b);//set a ship on the square
